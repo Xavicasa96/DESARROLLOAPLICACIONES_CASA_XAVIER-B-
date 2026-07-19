@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Integrador - Semana 8</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/css/map" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <!-- NAVBAR RESPONSIVA -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestor de Proyectos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-info btn-sm id="btnInfoModal" data-bs-toggle="modal" data-bs-target="#infoModal">Acerca de</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <!-- SISTEMA DE REJILLA (GRID) -->
+        <div class="row g-4">
+            
+            <!-- COLUMNA DEL FORMULARIO (Se adapta a 12 columnas en móvil, 5 en escritorio) -->
+            <div class="col-12 col-md-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">Nuevo Registro</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- FORMULARIO CON CLASES BOOTSTRAP -->
+                        <form id="miFormulario" novalidate>
+                            <div class="mb-3">
+                                <label for="titulo" class="form-label">Título (Mín. 4 caracteres)</label>
+                                <input type="text" id="titulo" class="form-control" placeholder="Ej. Tarea de Artillería">
+                                <div class="invalid-feedback">El título debe tener al menos 4 caracteres.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción (Mín. 15 caracteres)</label>
+                                <textarea id="descripcion" class="form-control" rows="3" placeholder="Detalles de la actividad..."></textarea>
+                                <div class="invalid-feedback">La descripción debe tener al menos 15 caracteres.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="estado" class="form-label">Estado</label>
+                                <select id="estado" class="form-select">
+                                    <option value="" selected disabled>Seleccione un estado...</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="En Progreso">En Progreso</option>
+                                    <option value="Completado">Completado</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor, seleccione un estado válido.</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100 d-flex align-items-center justify-content-center gap-2">
+                                <!-- SPINNER SIMULADO (Oculto por defecto con d-none) -->
+                                <span id="spinnerCarga" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                Guardar Registro
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ALERTA DINÁMICA (Buscada por tu JS) -->
+                <div id="mensaje" class="alert d-none mt-3" role="alert"></div>
+            </div>
+
+            <!-- COLUMNA DE LA LISTA Y RESULTADOS -->
+            <div class="col-12 col-md-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Registros Ingresados</h5>
+                        <span class="badge bg-light text-dark fs-6">
+                            Total: <span id="contador">0</span>
+                        </span>
+                    </div>
+                    <div class="card-body p-0">
+                        <!-- LISTA DINÁMICA -->
+                        <ul id="lista" class="list-group list-group-flush">
+                            <!-- Aquí tu JS inyectará los <li> dinámicamente -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL INFORMATIVO (REQUERIDO) -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-dark">
+                    <h5 class="modal-title" id="infoModalLabel">Información del Sistema</h5>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#infoModal" aria-label="Close"></button>
+                </div>
+                <div class="modal-content p-3">
+                    <p><strong>Proyecto Integrador - Semana 8</strong></p>
+                    <p>Esta aplicación permite gestionar registros con validaciones en tiempo real utilizando la arquitectura nativa de JavaScript combinada con los estilos responsivos de Bootstrap 5.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript Bundle CDN (Necesario para que funcionen los Modals y la Navbar responsiva) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tu archivo script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
