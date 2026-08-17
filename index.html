@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Primer Proyecto Web</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <h1>Sistema de Control de Inventario y Gestión</h1>
+{% block title %}Inicio - Proyecto Integrador{% endblock %}
 
-    <h2>Plataforma automatizada para la administración y supervisión de recursos</h2>
-
-    <h3>Desarrollado por Xavier Alexander Casa Lema</h3>
-
-</body>
-</html>
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">Bienvenido al Sistema de Gestión</h1>
+        <p class="col-md-8 fs-4">Página principal del proyecto convertida a Flask con Jinja2.</p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('productos') }}" role="button">Ver Productos</a>
+    </div>
+</div>
+{% endblock %} 
