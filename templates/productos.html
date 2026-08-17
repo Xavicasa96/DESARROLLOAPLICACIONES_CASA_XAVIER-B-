@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Productos - Proyecto Integrador{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Catálogo de Productos</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in productos %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.nombre }}</td>
+                <td><span class="badge bg-secondary">{{ item.categoria }}</span></td>
+                <td>${{ "%.2f"|format(item.precio) }}</td>
+                <td>{{ item.stock }} unidades</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
