@@ -2,10 +2,15 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Ruta Principal (Informativa / Index)
+# Ruta Principal (Informativa / Index con variables y diccionarios)
 @app.route('/')
 def index():
-    return render_template('index.html')
+    sistema_info = {
+        "nombre": "Sistema de Gestión Integral",
+        "version": "v2.0 - Dinámico con Jinja2",
+        "desarrollador": "Xavier Casa"
+    }
+    return render_template('index.html', info=sistema_info)
 
 # Ruta Módulo Productos
 @app.route('/productos')

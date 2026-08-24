@@ -12,7 +12,7 @@
                 <th>Producto</th>
                 <th>Categoría</th>
                 <th>Precio</th>
-                <th>Stock</th>
+                <th>Stock / Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,14 @@
                 <td>{{ item.nombre }}</td>
                 <td><span class="badge bg-secondary">{{ item.categoria }}</span></td>
                 <td>${{ "%.2f"|format(item.precio) }}</td>
-                <td>{{ item.stock }} unidades</td>
+                <td>
+                    <!-- Condicional requerido para la Semana 10 -->
+                    {% if item.stock > 0 %}
+                        <span class="badge bg-success">Disponible ({{ item.stock }})</span>
+                    {% else %}
+                        <span class="badge bg-danger">Agotado</span>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

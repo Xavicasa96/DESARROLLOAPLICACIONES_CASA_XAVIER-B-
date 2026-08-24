@@ -5,9 +5,12 @@
 {% block content %}
 <div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
     <div class="container-fluid py-3">
-        <h1 class="display-5 fw-bold">Bienvenido al Sistema de Gestión</h1>
-        <p class="col-md-8 fs-4">Página principal del proyecto convertida a Flask con Jinja2.</p>
+        <!-- Uso de variable y filtro upper -->
+        <h1 class="display-5 fw-bold">{{ info.nombre|upper }}</h1>
+        <p class="col-md-8 fs-4">Aplicación desarrollada con Python, Flask y Jinja2.</p>
+        <p class="text-muted">Versión actual: <strong>{{ info.version }}</strong></p>
+        <hr class="my-4">
         <a class="btn btn-primary btn-lg" href="{{ url_for('productos') }}" role="button">Ver Productos</a>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
